@@ -29,5 +29,12 @@ namespace WindowsFormsApplication1
             double b = double.Parse(textBox2.Text);
             textBox3.Text = (a - b).ToString();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            double a = double.Parse(textBox1.Text);
+            double b = double.Parse(textBox2.Text);
+            textBox3.Text = (a * b).ToString();
+        }
     }
 }
