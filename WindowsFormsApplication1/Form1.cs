@@ -16,5 +16,10 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = int.Parse(textBox1.Text + textBox2.Text).ToString();
+        }
     }
 }
