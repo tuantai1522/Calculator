@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != String.Empty && textBox2.Text != String.Empty)
+            if (textBox1.Text != String.Empty)
             {
                 textBox3.Text = int.Parse(textBox1.Text + textBox2.Text).ToString();
             }
