@@ -19,24 +19,49 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != String.Empty)
+
+            if(String.Empty != textBox1.Text && textBox2.Text != String.Empty)
             {
-                textBox3.Text = int.Parse(textBox1.Text + textBox2.Text).ToString();
+                int a = int.Parse(textBox1.Text);
+                int b = int.Parse(textBox2.Text);
+                Calculation c = new Calculation(a, b);
+                textBox3.Text = c.Execute("+").ToString();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            double a = double.Parse(textBox1.Text);
-            double b = double.Parse(textBox2.Text);
-            textBox3.Text = (a - b).ToString();
+
+            if (String.Empty != textBox1.Text && textBox2.Text != String.Empty)
+            {
+                int a = int.Parse(textBox1.Text);
+                int b = int.Parse(textBox2.Text);
+                Calculation c = new Calculation(a, b);
+                textBox3.Text = c.Execute("-").ToString();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            double a = double.Parse(textBox1.Text);
-            double b = double.Parse(textBox2.Text);
-            textBox3.Text = (a * b).ToString();
+            if (String.Empty != textBox1.Text && textBox2.Text != String.Empty)
+            {
+                int a = int.Parse(textBox1.Text);
+                int b = int.Parse(textBox2.Text);
+                Calculation c = new Calculation(a, b);
+                textBox3.Text = c.Execute("*").ToString();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (String.Empty != textBox1.Text && textBox2.Text != String.Empty)
+            {
+                int a = int.Parse(textBox1.Text);
+                int b = int.Parse(textBox2.Text);
+                Calculation c = new Calculation(a, b);
+                textBox3.Text = c.Execute("/").ToString();
+            }
         }
     }
 }
