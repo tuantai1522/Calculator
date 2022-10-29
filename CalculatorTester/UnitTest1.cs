@@ -8,6 +8,19 @@ namespace CalculatorTester
     public class UnitTest1
     {
         private Calculation cal;
+        public TestContext TestContext { get; set; }
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+@".\Data\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+        [TestMethod]
+        public void TestWithDataSource()
+        {
+            int a = int.Parse(TestContext.DataRow[0].ToString());
+            int b = int.Parse(TestContext.DataRow[1].ToString());
+            int expected = int.Parse(TestContext.DataRow[2].ToString());
+            Calculation c = new Calculation(a, b);
+            int actual = c.Execute("+");
+            Assert.AreEqual(expected, actual);
+        }
         [TestInitialize]
         public void SetUp()
         {
