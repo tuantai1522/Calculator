@@ -7,20 +7,10 @@ namespace CalculatorTester
     [TestClass]
     public class UnitTest1
     {
-        private Calculation cal;
         public TestContext TestContext { get; set; }
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-@".\Data\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
-        [TestMethod]
-        public void TestWithDataSource()
-        {
-            int a = int.Parse(TestContext.DataRow[0].ToString());
-            int b = int.Parse(TestContext.DataRow[1].ToString());
-            int expected = int.Parse(TestContext.DataRow[2].ToString());
-            Calculation c = new Calculation(a, b);
-            int actual = c.Execute("+");
-            Assert.AreEqual(expected, actual);
-        }
+        private Calculation cal;
+
+
         [TestInitialize]
         public void SetUp()
         {
@@ -31,6 +21,7 @@ namespace CalculatorTester
         {
             Assert.AreEqual(cal.Execute("+"), 15);
         }
+
         [TestMethod]
         public void TestSubOperator()
         {
@@ -52,6 +43,21 @@ namespace CalculatorTester
         {
             Calculation c = new Calculation(2, 0);
             c.Execute("/");
+        }
+
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+        @".\TextData.csv", "TextData#csv", DataAccessMethod.Sequential)]
+        [TestMethod]
+        public void TestWithDataSource()
+        {
+            int a = int.Parse(TestContext.DataRow[0].ToString());
+            int b = int.Parse(TestContext.DataRow[1].ToString());
+            string operation = TestContext.DataRow[2].ToString();
+            operation = operation.Remove(0, 1);
+            int expected = int.Parse(TestContext.DataRow[3].ToString());
+            Calculation c = new Calculation(a, b);
+            int actual = c.Execute(operation);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
